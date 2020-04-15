@@ -1,11 +1,11 @@
 version: '3'
 services:
   nginx:
-    image: nemosupinfo/nginx-4dvop:1.0
+    image: nemosupinfo/nginx-4dvop
     ports:
       - "8080:8080"
   haproxy:
-    image: nemosupinfo/haproxy-4dvop:1.0
+    image: nemosupinfo/haproxy-4dvop
     ports:
       - "80:80"
     depends_on:
