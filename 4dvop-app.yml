@@ -1,0 +1,21 @@
+- hosts: app_vm
+  become: true
+  tasks:
+    - name: Deploy nginx-4dvop
+      docker_container:
+        name: nginx
+        hostname: nginx
+        image: nemosupinfo/nginx-4dvop
+        state: started
+        ports:
+          - "8080:8080"
+    - name: Deploy haproxy-4dvop
+      docker_container:
+        name: haproxy
+        hostname: haproxy 
+        image: nemosupinfo/haproxy-4dvop
+        state: started
+        links:  
+          - nginx:nginx
+        ports:
+          - "80:80"
